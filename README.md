@@ -77,5 +77,6 @@ to stage the changes we made to that file (alternatively you can use ```git add 
 git commit -m "commit message"
 ```
 All commits require a commit message. If you don't include the -m flag it'll prompt you in the command line anyway. 
+Let's make another commit while we're at it. Modify file1.txt with nedit and replace the contents with whatever phrase you want. Stage and commit the changes as done previously.
 ## Pushing and pulling
 
