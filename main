@@ -1,0 +1,8 @@
+#!/bin/bash
+
+FILE=file1
+
+echo "This is a tutorial for working with GitHub."
+echo "The contents of $FILE are:"
+echo ""
+cat $FILE
