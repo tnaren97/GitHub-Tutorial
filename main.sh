@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES=$(ls file*)
+FILES=$(ls *.txt)
 
 echo "This is a tutorial for working with GitHub. This script will print the outputs of every text file it sees in the current directory."
 
