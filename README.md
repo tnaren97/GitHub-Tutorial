@@ -72,11 +72,52 @@ to create a new file. Use ```nedit file5.txt``` to bring up an editor to type in
 ```
 git add file5.txt
 ```
-to stage the changes we made to that file (alternatively you can use ```git add . ``` to stage any changes made to all files in this directory). You can stage as many changes as you want though it's usually best practice to stage related changes together to include in a single commit. Now we can commit these staged changes with
+to stage the changes we made to that file (alternatively you can use ```git add . ``` to stage any changes made to all files in this directory). You can stage as many changes as you want though it's usually best practice to stage related changes together to include in a single commit. You can check all the staged changes with
+```
+git status
+```
+Now we can commit these staged changes with
 ```
 git commit -m "commit message"
 ```
-All commits require a commit message. If you don't include the -m flag it'll prompt you in the command line anyway. 
+All commits require a commit message. If you don't include the -m flag it'll prompt you in the command line anyway.
 Let's make another commit while we're at it. Modify file1.txt with nedit and replace the contents with whatever phrase you want. Stage and commit the changes as done previously.
+## Merging branches
+Now say we want to merge our new branch back into main because we're satisfied with the changes we've made. Merging is as simple as checking out back to main and running
+```git merge "new branch name"```
+However, if you try this you'll get an error saying "Merge conflict". Essentially, Git has conflicting changes for two versions of the same file and doesn't know which one to keep so it does nothing. It's up to you to fix the merge conflict. The best way to do this is use an IDE like Visual Studio Code to inspect each of the merge conflicts side-by-side and accept or reject changes for each one. Once all conflicts are fixed, you can run the command again to merge the branches.
 ## Pushing and pulling
+All of the changes we've made so far have been local, i.e., we haven't affected anything in the remote repository. That's where pushing and pulling come in. ```git push``` is used to sync changes from your local repository to the remote repository while ```git pull``` does the opposite. It's important to push changes every so often both to back up to all your commits and also so other people can see the status of your work. Vice versa, if an update happens upstream to a branch you're working on, you'll want to ```git pull``` to sync the new changes to your local copy. You might even have to handle some merge conflicts.
 
+### Pushing
+Let's try out pushing your code to GitHub. Switch to the branch you made and run 
+```
+git push
+```
+Now navigate to the website and refresh your page. You might see a new notifaction asking for a pull request. We'll come back to that in a minute. Click the drop down next to main. This lists all the branches in this project. Your new branch should now be listed there.
+### Pulling
+Now let's try making changes to the remote repository and pulling that locally. On the homepage for your GitHub repository, switch to the branch you made. Pick one of the text files and edit it using the website's built in text editor. Now go back to the command line and switch to the same branch. Run 
+```
+git pull
+```
+to download the changes and automatically merge them into your local branch. Alternatively, you can also use 
+```
+git fetch
+```
+to download the changes without merging them into your local branch. This is great if you want to pick and choose what commits you merge in.
+## Miscellaneous
+### gitignore
+If there are files you don't want Git to track (say log files or build outputs from compilation), you can use a gitignore file to whitelist them from Git. Simply make the file by running 
+```
+touch .gitignore
+```
+in the root of your repository and then add the files or folders you don't want tracked to it.
+### Commit history
+You can use 
+```
+gitk --all
+```
+to bring up a GUI showing commit history for a repository.
+### IDEs
+IDEs like Visual Studio Code have a lot of built in functionality to make Git management easy. Alternatively you can use something like GitHub Desktop to make things simpler (works best for Windows where the command line is kind of messy)
+to bring up a graphical interface
