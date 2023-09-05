@@ -1,4 +1,4 @@
-# A tutorial for basic Git actions
+# A Tutorial for Basic Git Actions
 To get started, fork this repository to your own account by clicking the fork button in the top right corner. This creates a separate copy on your own account that you can edit without impacting the original.
 
 ## Setting up Git in the command line.
@@ -19,4 +19,10 @@ Hooray! Git and GitHub are now linked allowing you to push and pull code from yo
 You can test whether or not it worked with
 ```
 ssh -T git@github.com
+```
+## Cloning a repository
+We can now get started working with a repository. On the home page of your forked repository, click the green Code button and copy the git url.
+Now go back to the command line and find a directory where you'd like to store the code.
+```
+git clone git@github.com:tnaren97/Github-Tutorial.git
 ```
