@@ -18,6 +18,7 @@ Next navigate to your GitHub account and go to Settings > SSH and GPG Keys. Crea
 Hooray! Git and GitHub are now linked allowing you to push and pull code from your cloud repositories to your local system.
 You can test whether or not it worked with
 ```
+git config --list
 ssh -T git@github.com
 ```
 
@@ -25,7 +26,7 @@ ssh -T git@github.com
 We can now get started working with a repository. On the home page of your forked repository, click the green Code button and copy the git url.
 Now go back to the command line and find a directory where you'd like to store the code locally and run the below command to clone the repository.
 ```
-git clone git@github.com:tnaren97/Github-Tutorial.git
+git clone "git url"
 ```
 You'll see that a copy of the repository is now stored in your local folder. Each of the three files in this repo just contain some basic text while main.sh is a bash script that prints the contents of each of the text files. You can run it with 
 ```
