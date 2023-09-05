@@ -1,7 +1,7 @@
 # A Tutorial for Basic Git Actions
 To get started, fork this repository to your own account by clicking the fork button in the top right corner. This creates a separate copy on your own account that you can edit without impacting the original.
 
-## Setting up Git in the command line.
+## Setting up Git in the command line
 *If you've already set up Git on your local system you can skip to the next section.*
 
 First, run these commands to set up your user on the local system.
