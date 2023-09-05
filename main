@@ -1,9 +1,0 @@
-#!/bin/bash
-
-FILE=file4
-
-echo "This is a tutorial for working with GitHub."
-echo "This file is in branch2"
-echo "The contents of $FILE are:"
-echo ""
-cat $FILE
