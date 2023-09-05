@@ -1,2 +1,2 @@
-# UWMRI-Internal-Documentation
-A repository for hosting internal documentation for UW MRI stuff
+# A tutorial for basic git actions
+To get started, fork this repository to add it to your own account.
