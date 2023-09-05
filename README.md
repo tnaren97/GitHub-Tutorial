@@ -20,37 +20,63 @@ You can test whether or not it worked with
 ```
 ssh -T git@github.com
 ```
+
 ## Cloning a repository
 We can now get started working with a repository. On the home page of your forked repository, click the green Code button and copy the git url.
 Now go back to the command line and find a directory where you'd like to store the code locally and run the below command to clone the repository.
 ```
 git clone git@github.com:tnaren97/Github-Tutorial.git
 ```
-You'll see that a copy of the repository is now stored in your local folder. Each of the three files in this repo just contain some basic text while main.sh is a basic bash script that prints the contents of each of the files.  
+You'll see that a copy of the repository is now stored in your local folder. Each of the three files in this repo just contain some basic text while main.sh is a bash script that prints the contents of each of the text files. You can run it with 
 ```
-git branch
+./main.sh
 ```
-to list all the branches currently available in your local repo (at the moment, you should only see ```main```).
-## Working with branches
-The ```main``` branch is the primary code base. You generally don't want to make changes to this branch as it's expected to be bug free and working properly. However, if you do want to add new features or fix some bugs, the best way to do so is to make a new branch. Branching creates a separate version of the code base allowing you to modify it without affecting the original. However, the cool thing about Git is that this copy is kept in-place. That means if you make 6 branches you aren't making 6 different copies of each file but instead have only 1 copy and are tracking the changes that differ between each version of that file. Git has something called ```HEAD``` (stored in the ```.git``` folder) that acts as a pointer to the current branch. Everytime you switch branches, this pointer updates to point to the new branch. The ```HEAD``` will automatically modify all the files in the directory to apply any changes associated with that branch. If you want to see where the ```HEAD``` is currently pointing run 
+You might also need to run ```chmod +x main.sh``` to make it executable first.
+
+## Working With Branches
+Run
+```git branch```
+to list all branches currently on the system. Your current branch will have an * in front of it. 
+### A primer on branches
+The ```main``` branch is the primary code base. You generally don't want to make changes to this branch as it's expected to be bug free and working properly. However, if you do want to add new features or fix some bugs, the best way to do so is to make a new branch. Branching creates a separate version of the code base allowing you to modify it without affecting the original. However, the cool thing about Git is that this copy is kept in-place. That means if you make 6 branches you aren't making 6 different copies of each file but instead have only 1 copy and are tracking the changes that differ between each version of that file. Git has something called ```HEAD``` (stored in the ```.git``` folder) that acts as a pointer to the current branch. Everytime you switch branches, this pointer updates to point to the new branch. Git will automatically modify all the files in the directory to apply any changes associated with the branch ```HEAD``` is pointing to. If you want to see where the ```HEAD``` is currently pointing to run 
 ```
 cat .git/HEAD
 ```
-Here you should see HEAD is currently pointing to ```main```. You can also just use ```git branch``` to show the current branch.
+You should see HEAD is currently pointing to ```main```.
+### Making branches
 You can switch to a new branch using 
 ```
 git checkout "branch name"
 ```
-but you don't have any branches at the moment. You can create a new branch with 
+but you don't have any branches at the moment. While you can create a new branch with 
 ```
 git checkout -b "new branch name"
 ```
-however, for the moment we'll just switch to a branch that I've already created and saved upstream in the cloud. Run
+for the moment we'll just switch to a branch that I've already created and saved upstream in the cloud. Run
 ```
 git branch -a
 ```
-to list all branches, local and remote. You'll see your local ```main``` branch as well as branches that start with ```remotes/origin```. These are the remote branches stored on Github. You'll also see the remote HEAD which is pointing to the remote ```main``` branch. To download a remote branch, run 
+to list all branches, local and remote. You'll see your local ```main``` branch as well as branches that start with ```remotes/origin```. These are the remote branches stored on GitHub. You'll also see the remote HEAD which is pointing to the remote ```main``` branch. To download a remote branch, run 
 ```
 git checkout "name of remote branch"
 ```
-You will now 
+You will now have the changes from the remote branch synced to a local branch of the same name. You might also notice the files in this branch are different and that there's now a fourth text file. If you switch back to ```main``` you'll see the fourth file disappeared indicating it's only present in ```branch2```. Run ```./main.sh``` in both of these branches and compare the outputs. This is an example of how Git is modifiying files in place to keep up with different branches.
+## Making commits
+Let's get started with making commits. First let's make a new branch for your changes. Run 
+```
+git checkout -b "new branch name"
+```
+and name the branch whatever you like. Now you can make changes to any file without fear of messing anything up. To start with, why not make a new file? Run
+```touch file5.txt```
+to create a new file. Use ```nedit file5.txt``` to bring up an editor to type in whatever you want. When done, save and quit. Now we want to save the changes we made to this code base. To do this we need to stage our changes. Run
+```
+git add file5.txt
+```
+to stage the changes we made to that file (alternatively you can use ```git add . ``` to stage any changes made to all files in this directory). You can stage as many changes as you want though it's usually best practice to stage related changes together to include in a single commit. Now we can commit these staged changes with
+```
+git commit -m "commit message"
+```
+All commits require a commit message. If you don't include the -m flag it'll prompt you in the command line anyway. 
+Let's make another commit while we're at it. Modify file1.txt with nedit and replace the contents with whatever phrase you want. Stage and commit the changes as done previously.
+## Pushing and pulling
+
