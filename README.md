@@ -10,9 +10,10 @@ git config --global user.name "your GitHub username"
 git config --global user.email "your GitHub email"
 ```
 Next you'll need to connect your local Git account to your GitHub account. We'll do this with an SSH key. More details on this process are on [GitHub's official documentation](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
-Run the below command to generate an SSH key and copy the output to your clipboard
+Run the below commands to generate an SSH key and copy the output to your clipboard
 ```
 ssh-keygen -t ed25519 -C "your GitHub email"
+pbcopy < ~/.ssh/id_ed25519.pub
 ```
 Next navigate to your GitHub account and go to Settings > SSH and GPG Keys. Create a new key and paste the previously copied output here.
 Hooray! Git and GitHub are now linked allowing you to push and pull code from your cloud repositories to your local system.
